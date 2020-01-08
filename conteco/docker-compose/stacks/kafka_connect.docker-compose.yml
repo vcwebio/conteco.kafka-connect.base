@@ -1,0 +1,26 @@
+---
+version: '3'
+services:
+
+# START SERVICE kafka-connect.base
+  kafka_connect:
+    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/conteco.kafka-connect.base:5.3.1
+    environment: ['CONNECT_BOOTSTRAP_SERVERS=kafka:9092', 'CONNECT_REST_PORT=28083', 'CONNECT_GROUP_ID=${CONTECO_TYPE}', 'CONNECT_CONFIG_STORAGE_TOPIC="${CONTECO_TYPE}-config"', 'CONNECT_OFFSET_STORAGE_TOPIC="${CONTECO_TYPE}-offsets"', 'CONNECT_STATUS_STORAGE_TOPIC="${CONTECO_TYPE}-status"', 'CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR=1', 'CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR=1', 'CONNECT_STATUS_STORAGE_REPLICATION_FACTOR=1', 'CONNECT_KEY_CONVERTER="io.confluent.connect.avro.AvroConverter"', 'CONNECT_VALUE_CONVERTER="io.confluent.connect.avro.AvroConverter"', 'CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL="http://kafka-connect:8081"', 'CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL="http://kafka-connect:8081"', 'CONNECT_INTERNAL_KEY_CONVERTER="org.apache.kafka.connect.json.JsonConverter"', 'CONNECT_INTERNAL_VALUE_CONVERTER="org.apache.kafka.connect.json.JsonConverter"', 'CONNECT_REST_ADVERTISED_HOST_NAME="kafka-connect"', 'CONNECT_LOG4J_ROOT_LOGLEVEL=DEBUG']
+    command: []
+    volumes: ['${CONTECO_TYPE}_conteco_dc_kafka_connect_volume:/var/lib/kafka/data']
+    ports: [${CONTECO_DC_KAFKA_CONNECT_PORTS}]
+    networks: [${CONTECO_TYPE}_overlay]
+    deploy:
+      mode: replicated
+      resources:
+        limits:
+          cpus: '${CONTECO_DC_KAFKA_CONNECT_DEPLOY_RESOURCES_LIMITS_CPUS}'
+          memory: '${CONTECO_DC_KAFKA_CONNECT_DEPLOY_RESOURCES_LIMITS_MEMORY}'
+        reservations:
+          cpus: '${CONTECO_DC_KAFKA_CONNECT_DEPLOY_RESOURCES_RESERVATIONS_CPUS}'
+          memory: '${CONTECO_DC_KAFKA_CONNECT_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}'
+      labels: []
+# END SERVICE kafka-connect.base
+
+volumes: {${CONTECO_TYPE}_conteco_dc_kafka_connect_volume: { external: true }}
+networks: {${CONTECO_TYPE}_overlay: { external: true }}
