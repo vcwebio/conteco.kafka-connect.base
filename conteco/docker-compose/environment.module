@@ -2,8 +2,8 @@
 
 # START CONFIGURATION
 export CONTECO_DC_GLOBAL_PACKAGE_CONTECO="kafka-connect.base"
-export CONTECO_DC_GLOBAL_STACKNAMES="kafka_connect"
-export CONTECO_DC_GLOBAL_BOOTSTACKS="kafka_connect"
+export CONTECO_DC_GLOBAL_STACKNAMES="conteco_dc_kafka_connect"
+export CONTECO_DC_GLOBAL_BOOTSTACKS="conteco_dc_kafka_connect"
 export CONTECO_DC_GLOBAL_RUNSTACKS=""
 export CONTECO_DC_GLOBAL_VOLUME_LIST="${CONTECO_STACKPREFIX}_kafka_connect_volume"
 # END CONFIGURATION
