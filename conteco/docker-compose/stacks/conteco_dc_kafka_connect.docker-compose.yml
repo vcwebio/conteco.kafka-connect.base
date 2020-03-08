@@ -4,7 +4,7 @@ services:
 
 # START SERVICE kafka-connect.base
   kafka_connect:
-    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.kafka-connect.base:5.4.0
+    image: ${CONTECO_REGISTRY}${CONTECO_REALM_RUNTIME}/conteco.kafka-connect.base:5.4.0
     environment: ['CONNECT_BOOTSTRAP_SERVERS=kafka:9092', 'CONNECT_REST_PORT=28083', 'CONNECT_GROUP_ID=${CONTECO_TYPE}', 'CONNECT_CONFIG_STORAGE_TOPIC="${CONTECO_STACKPREFIX}-config"', 'CONNECT_OFFSET_STORAGE_TOPIC="${CONTECO_STACKPREFIX}-offsets"', 'CONNECT_STATUS_STORAGE_TOPIC="${CONTECO_STACKPREFIX}-status"', 'CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR=1', 'CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR=1', 'CONNECT_STATUS_STORAGE_REPLICATION_FACTOR=1', 'CONNECT_KEY_CONVERTER="io.confluent.connect.avro.AvroConverter"', 'CONNECT_VALUE_CONVERTER="io.confluent.connect.avro.AvroConverter"', 'CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL="http://kafka-connect:8081"', 'CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL="http://kafka-connect:8081"', 'CONNECT_INTERNAL_KEY_CONVERTER="org.apache.kafka.connect.json.JsonConverter"', 'CONNECT_INTERNAL_VALUE_CONVERTER="org.apache.kafka.connect.json.JsonConverter"', 'CONNECT_REST_ADVERTISED_HOST_NAME="kafka-connect"', 'CONNECT_LOG4J_ROOT_LOGLEVEL=DEBUG']
     command: []
     volumes: ['${CONTECO_STACKPREFIX}_kafka_connect_volume:/var/lib/kafka/data']
