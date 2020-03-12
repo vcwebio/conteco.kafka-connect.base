@@ -1,4 +1,4 @@
-# `kafka-connect.base` - ContEco
+# `kafka_connect.base` - ContEco
 
 Confluent Kafka Connect base image, with configuration changes.
 See `conteco.docs.overview` for more information on the ContEco ecosystem.

@@ -2,7 +2,7 @@
 
 # START CONFIGURATION
 DOLLAR='$'
-export CONTECO_DC_GLOBAL_STACKS="kafka-connect.base"
+export CONTECO_DC_GLOBAL_STACKS="kafka_connect.base"
 export CONTECO_DC_GLOBAL_STACKNAMES="conteco_dc_kafka_connect"
 export CONTECO_DC_GLOBAL_BOOTSTACKS="conteco_dc_kafka_connect"
 export CONTECO_DC_GLOBAL_RUNSTACKS=""
@@ -25,11 +25,11 @@ export CONTECO_DC_KAFKA_CONNECT_ENVIRONMENT="\
 'CONNECT_STATUS_STORAGE_REPLICATION_FACTOR=1', \
 'CONNECT_KEY_CONVERTER=\"io.confluent.connect.avro.AvroConverter\"', \
 'CONNECT_VALUE_CONVERTER=\"io.confluent.connect.avro.AvroConverter\"', \
-'CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL=\"http://kafka-connect:8081\"', \
-'CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL=\"http://kafka-connect:8081\"', \
+'CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL=\"http://kafka_connect:8081\"', \
+'CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL=\"http://kafka_connect:8081\"', \
 'CONNECT_INTERNAL_KEY_CONVERTER=\"org.apache.kafka.connect.json.JsonConverter\"', \
 'CONNECT_INTERNAL_VALUE_CONVERTER=\"org.apache.kafka.connect.json.JsonConverter\"', \
-'CONNECT_REST_ADVERTISED_HOST_NAME=\"kafka-connect\"', \
+'CONNECT_REST_ADVERTISED_HOST_NAME=\"kafka_connect\"', \
 'CONNECT_LOG4J_ROOT_LOGLEVEL=DEBUG'"
 export CONTECO_DC_KAFKA_CONNECT_COMMAND=
 export CONTECO_DC_KAFKA_CONNECT_VOLUMES="'${DOLLAR}{CONTECO_STACKPREFIX}_kafka_connect_volume:/var/lib/kafka/data'"

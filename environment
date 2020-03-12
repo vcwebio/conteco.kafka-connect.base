@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-export CONTECO_LABEL="kafka-connect.base - ContEco"
+export CONTECO_LABEL="kafka_connect.base - ContEco"
 export CONTECO_DESCRIPTION="Confluent Kafka Connect base image, with configuration changes."
 
-export CONTECO_TYPE="kafka-connect"
+export CONTECO_TYPE="kafka_connect"
 export CONTECO_NAME="base"
 export CONTECO_TAG="5.4.0"
 
-export CONTECO_BASE="external.kafka-connect:5.4.0"
+export CONTECO_BASE="external.kafka_connect:5.4.0"
 export CONTECO_BUILD="image-base"
