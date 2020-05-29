@@ -10,7 +10,7 @@ export CONTECO_DC_GLOBAL_VOLUME_LIST="${DOLLAR}{CONTECO_STACKPREFIX}_kafka_conne
 # END CONFIGURATION
 
 # START GLOBAL SETTINGS
-export CONTECO_DC_GLOBAL='$CONTECO_DC_GLOBAL_SERVICE_NAME,$CONTECO_DC_GLOBAL_IMAGE_NAME,$CONTECO_DC_KAFKA_CONNECT_ENVIRONMENT,$CONTECO_DC_KAFKA_CONNECT_COMMAND,$CONTECO_DC_KAFKA_CONNECT_VOLUMES,$CONTECO_DC_KAFKA_CONNECT_NETWORKS,$CONTECO_DC_KAFKA_CONNECT_DEPLOY_LABELS,$CONTECO_DC_KAFKA_CONNECT_DEPLOY_MODE,$CONTECO_DC_GLOBAL_VOLUMES,$CONTECO_DC_GLOBAL_NETWORKS'
+export CONTECO_DC_GLOBAL='$CONTECO_DC_GLOBAL_SERVICE_NAME,$CONTECO_DC_GLOBAL_IMAGE_NAME,$CONTECO_DC_KAFKA_CONNECT_ENVIRONMENT,$CONTECO_DC_KAFKA_CONNECT_COMMAND,$CONTECO_DC_KAFKA_CONNECT_VOLUMES,$CONTECO_DC_KAFKA_CONNECT_NETWORKS,$CONTECO_DC_KAFKA_CONNECT_DEPLOY_MODE,$CONTECO_DC_GLOBAL_VOLUMES,$CONTECO_DC_GLOBAL_NETWORKS'
 export CONTECO_DC_GLOBAL_SERVICE_NAME="${CONTECO_TYPE}"
 export CONTECO_DC_GLOBAL_IMAGE_NAME="${CONTECO_TYPE}.${CONTECO_NAME}:${CONTECO_TAG}"
 export CONTECO_DC_KAFKA_CONNECT_ENVIRONMENT="\
@@ -32,20 +32,13 @@ export CONTECO_DC_KAFKA_CONNECT_ENVIRONMENT="\
 'CONNECT_INTERNAL_KEY_CONVERTER=org.apache.kafka.connect.json.JsonConverter',\
 'CONNECT_INTERNAL_VALUE_CONVERTER=org.apache.kafka.connect.json.JsonConverter',\
 'CONNECT_PRODUCER_CLASSPATH=/usr/share/java/monitoring-interceptors/monitoring-interceptors-5.4.0.jar',\
-'CONNECT_PRODUCER_INTERCEPTOR_CLASSES=io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor',\'
+'CONNECT_PRODUCER_INTERCEPTOR_CLASSES=io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor',\
 'CONNECT_CONSUMER_INTERCEPTOR_CLASSES=io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor',\
 'CONNECT_PLUGIN_PATH=/usr/share/java,/usr/share/confluent-hub-components',\
 'CONNECT_LOG4J_LOGGERS=org.apache.zookeeper=ERROR,org.I0Itec.zkclient=ERROR,org.reflections=ERROR'"
-#'CONNECT_PRODUCER_INTERCEPTOR_CLASSES= io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor',\
-#'CONNECT_CONSUMER_INTERCEPTOR_CLASSES= io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor',\
-#'CONNECT_PLUGIN_PATH= /usr/share/java,/usr/share/confluent-hub-components',\
-#'CONNECT_LOG4J_LOGGERS= org.apache.zookeeper=ERROR,org.I0Itec.zkclient=ERROR,org.reflections=ERROR',\
-#'CONNECT_PLUGIN_PATH=/usr/share/java,/usr/share/confluent-hub-components'"
-#'CLASSPATH= /usr/share/java/monitoring-interceptors/monitoring-interceptors-5.4.0.jar',\
 export CONTECO_DC_KAFKA_CONNECT_COMMAND=
 export CONTECO_DC_KAFKA_CONNECT_VOLUMES="'${DOLLAR}{CONTECO_STACKPREFIX}_kafka_connect_connect_secrets_volume:/etc/kafka-connect/secrets','${DOLLAR}{CONTECO_STACKPREFIX}_kafka_connect_secrets_volume:/etc/kafka/secrets','${DOLLAR}{CONTECO_STACKPREFIX}_kafka_connect_data_volume:/var/lib/kafka/data','${DOLLAR}{CONTECO_STACKPREFIX}_kafka_connect_jars_volume:/etc/kafka-connect/jars'"
 export CONTECO_DC_KAFKA_CONNECT_NETWORKS="${DOLLAR}{CONTECO_NETWORKLOCAL}_overlay"
-export CONTECO_DC_KAFKA_CONNECT_DEPLOY_LABELS=
 export CONTECO_DC_KAFKA_CONNECT_DEPLOY_MODE="replicated"
 export CONTECO_DC_GLOBAL_VOLUMES="${DOLLAR}{CONTECO_STACKPREFIX}_kafka_connect_connect_secrets_volume: { external: true },${DOLLAR}{CONTECO_STACKPREFIX}_kafka_connect_secrets_volume: { external: true },${DOLLAR}{CONTECO_STACKPREFIX}_kafka_connect_data_volume: { external: true },${DOLLAR}{CONTECO_STACKPREFIX}_kafka_connect_jars_volume: { external: true }"
 export CONTECO_DC_GLOBAL_NETWORKS="${DOLLAR}{CONTECO_NETWORKLOCAL}_overlay: { external: true }"
@@ -53,6 +46,10 @@ export CONTECO_DC_GLOBAL_NETWORKS="${DOLLAR}{CONTECO_NETWORKLOCAL}_overlay: { ex
 
 # START SETTINGS kafka_connect.base
 export CONTECO_DC_KAFKA_CONNECT_PORTS="8083:8083"
+export CONTECO_DC_KAFKA_CONNECT_LABELS=
+export CONTECO_DC_KAFKA_CONNECT_DEPLOY_LABELS=
+export CONTECO_DC_KAFKA_CONNECT_DEPLOY_REPLICAS=1
+export CONTECO_DC_KAFKA_CONNECT_DEPLOY_PLACEMENT_CONSTRAINTS=
 export CONTECO_DC_KAFKA_CONNECT_DEPLOY_RESOURCES_LIMITS_CPUS=
 export CONTECO_DC_KAFKA_CONNECT_DEPLOY_RESOURCES_RESERVATIONS_CPUS="0.1"
 export CONTECO_DC_KAFKA_CONNECT_DEPLOY_RESOURCES_LIMITS_MEMORY="1536m"
